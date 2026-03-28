@@ -1,0 +1,77 @@
+# BayerDBA 技能树配置
+
+skills:
+  aws:
+    name: "AWS 云技能"
+    weight: 0.35
+    subskills:
+      iam:
+        name: "IAM & 权限"
+        weight: 0.3
+        question_pool: "aws_cloud.yaml"
+        tags: ["iam", "policy", "security"]
+      security:
+        name: "安全"
+        weight: 0.2
+        question_pool: "aws_cloud.yaml"
+        tags: ["security", "kms", "encryption"]
+      compute:
+        name: "计算"
+        weight: 0.2
+        question_pool: "aws_cloud.yaml"
+        tags: ["compute", "ec2", "lambda"]
+      storage:
+        name: "存储"
+        weight: 0.15
+        question_pool: "aws_cloud.yaml"
+        tags: ["storage", "s3", "ebs"]
+      network:
+        name: "网络"
+        weight: 0.15
+        question_pool: "aws_cloud.yaml"
+        tags: ["networking", "vpc", "subnet"]
+
+  python:
+    name: "Python 技能"
+    weight: 0.30
+    subskills:
+      api:
+        name: "API 调用"
+        weight: 0.35
+        question_pool: "python_skills.yaml"
+        tags: ["api", "requests", "http"]
+      development:
+        name: "脚本开发"
+        weight: 0.35
+        question_pool: "python_skills.yaml"
+        tags: ["development", "file", "json"]
+      ops:
+        name: "运维自动化"
+        weight: 0.30
+        question_pool: "python_skills.yaml"
+        tags: ["ops", "boto3", "aws"]
+
+  database:
+    name: "数据库技能"
+    weight: 0.35
+    subskills:
+      permission:
+        name: "权限管理"
+        weight: 0.25
+        question_pool: "database_skills.yaml"
+        tags: ["permission", "grant", "role"]
+      security:
+        name: "安全管理"
+        weight: 0.25
+        question_pool: "database_skills.yaml"
+        tags: ["security", "ssl", "encryption"]
+      backup:
+        name: "备份管理"
+        weight: 0.30
+        question_pool: "database_skills.yaml"
+        tags: ["backup", "pitr", "dr"]
+      performance:
+        name: "性能优化"
+        weight: 0.20
+        question_pool: "database_skills.yaml"
+        tags: ["performance", "index", "lock"]

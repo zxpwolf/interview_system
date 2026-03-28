@@ -1,0 +1,460 @@
+# AWS 云技能题库
+
+## IAM & 权限
+
+---
+
+### aws_iam_001
+**难度:** L1  
+**题目:** 在 AWS IAM 中，以下哪种方式是授予 EC2 实例访问 S3 存储桶权限的最佳实践？
+
+A. 将 AWS Access Key 和 Secret Key 硬编码在应用程序中  
+B. 创建 IAM 用户并将凭证存储在 EC2 实例的用户数据中  
+C. 创建 IAM 角色并将其附加到 EC2 实例  
+D. 使用根账户创建 Access Key 并传递给 EC2 实例  
+
+**正确答案:** C  
+**解析:** IAM 角色是授予 EC2 实例权限的最佳实践。角色提供临时凭证，自动轮换，无需管理长期凭证。硬编码凭证 (A) 和存储在用户数据中 (B) 都有安全风险。根账户 (D) 不应该用于日常操作。  
+**知识点:** IAM Roles for EC2, 临时凭证，最小权限原则  
+**标签:** iam, ec2, security, best-practice
+
+---
+
+### aws_iam_002
+**难度:** L1  
+**题目:** AWS IAM 策略文档中，"Effect" 字段可以设置哪些值？
+
+A. Allow, Deny  
+B. Permit, Reject  
+C. Enable, Disable  
+D. Grant, Revoke  
+
+**正确答案:** A  
+**解析:** IAM 策略的 Effect 字段只有两个有效值：Allow(允许) 和 Deny(拒绝)。Deny 的优先级高于 Allow。  
+**知识点:** IAM Policy 结构，Effect 字段  
+**标签:** iam, policy, basics
+
+---
+
+### aws_iam_003
+**难度:** L2  
+**题目:** 以下哪个 IAM 策略语句正确实现了只允许用户从特定 IP 地址访问 S3 存储桶？
+
+A. 
+```json
+{
+  "Effect": "Allow",
+  "Action": "s3:*",
+  "Resource": "arn:aws:s3:::my-bucket/*",
+  "Condition": {"IpAddress": {"aws:SourceIp": "192.168.1.0/24"}}
+}
+```
+
+B. 
+```json
+{
+  "Effect": "Allow",
+  "Action": "s3:*",
+  "Resource": "arn:aws:s3:::my-bucket/*",
+  "Condition": {"StringEquals": {"aws:SourceIp": "192.168.1.0/24"}}
+}
+```
+
+C. 
+```json
+{
+  "Effect": "Allow",
+  "Action": "s3:*",
+  "Resource": "arn:aws:s3:::my-bucket/*",
+  "Condition": {"NumericLessThan": {"aws:SourceIp": "192.168.1.255"}}
+}
+```
+
+D. 
+```json
+{
+  "Effect": "Allow",
+  "Action": "s3:*",
+  "Resource": "arn:aws:s3:::my-bucket/*",
+  "Condition": {"Bool": {"aws:SourceIp": "192.168.1.0/24"}}
+}
+```
+
+**正确答案:** A  
+**解析:** IpAddress 是用于 IP 地址条件检查的正确条件运算符。StringEquals 用于字符串精确匹配，不适用于 IP 范围。  
+**知识点:** IAM Policy 条件，IpAddress 条件运算符  
+**标签:** iam, policy, s3, security, condition
+
+---
+
+### aws_iam_004
+**难度:** L2  
+**题目:** 关于 AWS IAM 中的 Access Analyzer，以下说法正确的是？
+
+A. 用于分析 CloudTrail 日志中的异常访问模式  
+B. 用于识别与外部实体共享的资源  
+C. 用于自动修复不安全的安全组规则  
+D. 用于监控 API 调用频率  
+
+**正确答案:** B  
+**解析:** IAM Access Analyzer 用于识别与外部实体 (其他 AWS 账户、组织外实体等) 共享的资源，帮助发现意外的资源访问。  
+**知识点:** IAM Access Analyzer, 资源共享  
+**标签:** iam, security, access-analyzer
+
+---
+
+### aws_iam_005
+**难度:** L3  
+**题目:** 在跨账户访问场景中，以下哪种配置是正确的？
+
+A. 仅在目标账户创建 IAM 角色，源账户用户直接 AssumeRole  
+B. 仅在源账户创建 IAM 角色，目标账户用户直接访问  
+C. 在目标账户创建 IAM 角色并配置信任策略允许源账户，源账户用户 AssumeRole  
+D. 在两个账户都创建相同的 IAM 用户  
+
+**正确答案:** C  
+**解析:** 跨账户访问的标准模式是：目标账户创建 IAM 角色，在角色的信任策略中指定源账户为可信实体，源账户用户通过 STS AssumeRole 获取临时凭证访问目标账户资源。  
+**知识点:** 跨账户访问，IAM Role 信任策略，STS AssumeRole  
+**标签:** iam, cross-account, sts, role
+
+---
+
+## 安全
+
+---
+
+### aws_sec_001
+**难度:** L1  
+**题目:** AWS KMS 中，Customer Managed Key (CMK) 与 AWS Managed Key 的主要区别是？
+
+A. CMK 提供更强的加密算法  
+B. CMK 可以由客户控制密钥轮换和权限策略  
+C. CMK 只能用于 S3 加密  
+D. CMK 不需要付费  
+
+**正确答案:** B  
+**解析:** CMK 允许客户完全控制密钥，包括设置密钥策略、启用/禁用、安排轮换、审计使用等。AWS Managed Key 由 AWS 管理，控制能力有限。  
+**知识点:** KMS, CMK, 密钥管理  
+**标签:** security, kms, encryption
+
+---
+
+### aws_sec_002
+**难度:** L2  
+**题目:** Security Groups 和 Network ACLs 的主要区别是？
+
+A. Security Groups 是无状态的，NACLs 是有状态的  
+B. Security Groups 是有状态的，NACLs 是无状态的  
+C. 两者都是有状态的  
+D. 两者都是无状态的  
+
+**正确答案:** B  
+**解析:** Security Groups 是有状态的——允许的入站流量自动允许出站响应。NACLs 是无状态的——入站和出站规则需要分别配置。  
+**知识点:** Security Groups, NACL, 有状态/无状态  
+**标签:** security, networking, vpc
+
+---
+
+### aws_sec_003
+**难度:** L2  
+**题目:** 以下哪项服务可以用于检测 AWS 账户中的异常行为和潜在威胁？
+
+A. AWS Config  
+B. AWS GuardDuty  
+C. AWS Systems Manager  
+D. AWS Trusted Advisor  
+
+**正确答案:** B  
+**解析:** GuardDuty 是威胁检测服务，使用机器学习和威胁情报检测异常行为，如未授权访问、加密货币挖矿、数据泄露等。  
+**知识点:** GuardDuty, 威胁检测  
+**标签:** security, guardduty, monitoring
+
+---
+
+### aws_sec_004
+**难度:** L3  
+**题目:** 要实现 S3 存储桶的加密，且要求使用客户管理的密钥并启用自动轮换，应该选择？
+
+A. SSE-S3  
+B. SSE-KMS with AWS managed key  
+C. SSE-KMS with Customer Managed Key + 启用自动轮换  
+D. 客户端加密  
+
+**正确答案:** C  
+**解析:** SSE-KMS with CMK 允许客户管理密钥，并可以在 KMS 控制台启用自动轮换 (每年一次)。SSE-S3 使用 AWS 管理的密钥，SSE-KMS with AWS managed key 无法控制轮换。  
+**知识点:** S3 加密，KMS, 密钥轮换  
+**标签:** security, s3, kms, encryption
+
+---
+
+### aws_sec_005
+**难度:** L3  
+**题目:** CloudTrail 日志默认保存多久？如何启用长期存储？
+
+A. 30 天，无法更改  
+B. 90 天，创建 S3 存储桶并配置 Trail 投递  
+C. 1 年，自动归档到 Glacier  
+D. 永久，无需配置  
+
+**正确答案:** B  
+**解析:** CloudTrail 默认在事件历史中保存 90 天。要长期存储，需要创建 S3 存储桶并配置 Trail 将日志投递到 S3，可配合生命周期策略归档到 Glacier。  
+**知识点:** CloudTrail, 日志存储，审计  
+**标签:** security, cloudtrail, audit, s3
+
+---
+
+## 计算
+
+---
+
+### aws_comp_001
+**难度:** L1  
+**题目:** EC2 实例的哪种购买选项可以提供最高 90% 的折扣，但可能被中断？
+
+A. On-Demand Instances  
+B. Reserved Instances  
+C. Spot Instances  
+D. Dedicated Hosts  
+
+**正确答案:** C  
+**解析:** Spot Instances 利用 AWS 闲置容量，提供高达 90% 折扣，但当 AWS 需要容量时可能被中断 (提前 2 分钟通知)。适合容错、灵活的工作负载。  
+**知识点:** EC2 购买选项，Spot Instances  
+**标签:** compute, ec2, pricing
+
+---
+
+### aws_comp_002
+**难度:** L2  
+**题目:** Auto Scaling Group 的默认终止策略是？
+
+A. 最早启动的实例  
+B. 最新启动的实例  
+C. 具有最低 CPU 利用率的实例  
+D. 按照 Launch Template 顺序  
+
+**正确答案:** B  
+**解析:** 默认终止策略是"最新启动的实例"(Newest Instance)。这样可以保留运行时间较长的实例，可能已经预热。可以通过配置更改终止策略。  
+**知识点:** Auto Scaling, 终止策略  
+**标签:** compute, autoscaling, ec2
+
+---
+
+### aws_comp_003
+**难度:** L2  
+**题目:** AWS Lambda 函数的最大执行时间限制是？
+
+A. 5 分钟  
+B. 10 分钟  
+C. 15 分钟  
+D. 30 分钟  
+
+**正确答案:** C  
+**解析:** Lambda 函数的最大超时设置为 15 分钟 (900 秒)。超过此限制需要重新设计架构，如使用 Step Functions 或 ECS/Fargate。  
+**知识点:** Lambda, 执行限制  
+**标签:** compute, lambda, serverless
+
+---
+
+### aws_comp_004
+**难度:** L3  
+**题目:** 对于需要持续运行且负载稳定的数据库工作负载，哪种 EC2 购买选项最经济？
+
+A. On-Demand Instances  
+B. 1 年期 All Upfront Reserved Instances  
+C. 3 年期 All Upfront Reserved Instances  
+D. Spot Instances  
+
+**正确答案:** C  
+**解析:** 对于持续稳定的工作负载，3 年期 All Upfront RI 提供最大折扣 (相比 On-Demand 可达 60%+)。Spot 不适合数据库等需要持续运行的服务。  
+**知识点:** EC2 购买选项，成本优化  
+**标签:** compute, ec2, pricing, cost-optimization
+
+---
+
+### aws_comp_005
+**难度:** L3  
+**题目:** 在 ECS Fargate 中，以下哪项不能自定义？
+
+A. vCPU 数量  
+B. 内存大小  
+C. 底层 EC2 实例类型  
+D. 存储大小  
+
+**正确答案:** C  
+**解析:** Fargate 是 Serverless 容器服务，用户无需管理底层 EC2 实例。用户只需指定 vCPU 和内存，AWS 自动管理基础设施。  
+**知识点:** ECS Fargate, Serverless, 容器  
+**标签:** compute, ecs, fargate, containers
+
+---
+
+## 存储
+
+---
+
+### aws_stor_001
+**难度:** L1  
+**题目:** S3 Standard 存储类的可用性 SLA 是？
+
+A. 99.9%  
+B. 99.99%  
+C. 99.999999999% (11 个 9)  
+D. 99.99999999% (10 个 9)  
+
+**正确答案:** B  
+**解析:** S3 Standard 提供 99.99% 可用性 SLA。11 个 9 是耐久性 (Durability)，不是可用性 (Availability)。  
+**知识点:** S3 存储类，SLA  
+**标签:** storage, s3, sla
+
+---
+
+### aws_stor_002
+**难度:** L2  
+**题目:** 以下哪种 S3 存储类最适合长期归档，访问频率极低，且可以接受数小时的检索时间？
+
+A. S3 Standard  
+B. S3 Intelligent-Tiering  
+C. S3 Glacier Instant Retrieval  
+D. S3 Glacier Deep Archive  
+
+**正确答案:** D  
+**解析:** S3 Glacier Deep Archive 是最便宜的存储类，适合长期归档，标准检索时间 12 小时，批量检索 48 小时。  
+**知识点:** S3 存储类，Glacier, 归档  
+**标签:** storage, s3, glacier, archive
+
+---
+
+### aws_stor_003
+**难度:** L2  
+**题目:** EBS gp3 卷相比 gp2 卷的主要优势是？
+
+A. 更便宜且性能可独立配置  
+B. 最大容量更大  
+C. 支持加密  
+D. 只能用于 Graviton 实例  
+
+**正确答案:** A  
+**解析:** gp3 允许独立配置 IOPS 和吞吐量，基础价格比 gp2 低 20%，性能更可预测。两者都支持加密，最大容量相同。  
+**知识点:** EBS, gp2, gp3, 性能  
+**标签:** storage, ebs, ec2
+
+---
+
+### aws_stor_004
+**难度:** L3  
+**题目:** 要实现跨 Region 的 S3 数据复制，应该配置？
+
+A. S3 Batch Operations  
+B. S3 Transfer Acceleration  
+C. S3 Cross-Region Replication (CRR)  
+D. AWS DataSync  
+
+**正确答案:** C  
+**解析:** CRR 自动将对象复制到不同 Region 的存储桶，用于合规、延迟优化、灾难恢复等场景。需要两个桶都启用版本控制。  
+**知识点:** S3 CRR, 跨 Region 复制  
+**标签:** storage, s3, replication, dr
+
+---
+
+### aws_stor_005
+**难度:** L3  
+**题目:** EFS 文件系统支持哪种访问模式？
+
+A. 仅单个 EC2 实例访问  
+B. 同一 VPC 内多个 EC2 实例同时访问  
+C. 跨 Region 访问  
+D. 仅通过 Direct Connect 访问  
+
+**正确答案:** B  
+**解析:** EFS 是共享文件系统，支持同一 Region 内、同一 VPC 中多个 EC2 实例同时挂载访问。不支持跨 Region。  
+**知识点:** EFS, 共享文件系统  
+**标签:** storage, efs, ec2
+
+---
+
+## 网络
+
+---
+
+### aws_net_001
+**难度:** L1  
+**题目:** VPC 中，公有子网的定义是？
+
+A. 分配了 Elastic IP 的子网  
+B. 路由表中有指向 Internet Gateway 的路由  
+C. 配置了 NAT Gateway 的子网  
+D. 关联了 Security Group 的子网  
+
+**正确答案:** B  
+**解析:** 公有子网的定义是路由表中有 0.0.0.0/0 → Internet Gateway 的路由。私有子网没有直接互联网路由。  
+**知识点:** VPC, 子网，路由表  
+**标签:** networking, vpc, subnet
+
+---
+
+### aws_net_002
+**难度:** L2  
+**题目:** NAT Gateway 部署在哪个子网？
+
+A. 私有子网  
+B. 公有子网  
+C. 任意子网  
+D. 不能部署在 VPC 中  
+
+**正确答案:** B  
+**解析:** NAT Gateway 必须部署在公有子网，因为它需要访问互联网。私有子网的实例通过路由指向 NAT Gateway 来访问互联网。  
+**知识点:** NAT Gateway, 子网  
+**标签:** networking, vpc, nat
+
+---
+
+### aws_net_003
+**难度:** L2  
+**题目:** VPC Peering 连接支持以下哪种场景？
+
+A. 重叠 CIDR 的 VPC 之间  
+B. 同一 Region 不同账户的 VPC 之间  
+C. 跨 Region 的 VPC 之间 (不支持)  
+D. VPC 与本地数据中心之间  
+
+**正确答案:** B  
+**解析:** VPC Peering 支持同一 Region 或跨 Region、同账户或跨账户的 VPC 连接，但 CIDR 不能重叠。VPC 与本地数据中心用 Direct Connect 或 VPN。  
+**知识点:** VPC Peering, 网络连接  
+**标签:** networking, vpc, peering
+
+---
+
+### aws_net_004
+**难度:** L3  
+**题目:** Transit Gateway 相比 VPC Peering 的主要优势是？
+
+A. 更便宜  
+B. 支持重叠 CIDR  
+C. Hub-and-Spoke 架构，简化多 VPC 连接  
+D. 自动加密  
+
+**正确答案:** C  
+**解析:** Transit Gateway 提供中心辐射型架构，一个 TGW 可以连接多个 VPC 和本地网络，避免 VPC Peering 的全连接 (n²) 复杂性。  
+**知识点:** Transit Gateway, 网络架构  
+**标签:** networking, vpc, tgw
+
+---
+
+### aws_net_005
+**难度:** L3  
+**题目:** 要分析 VPC 中的网络流量，应该使用？
+
+A. CloudTrail  
+B. VPC Flow Logs  
+C. AWS Config  
+D. CloudWatch Alarms  
+
+**正确答案:** B  
+**解析:** VPC Flow Logs 捕获 VPC 中网络接口的 IP 流量信息，用于故障排查、安全分析、流量模式分析等。CloudTrail 记录 API 调用。  
+**知识点:** VPC Flow Logs, 网络监控  
+**标签:** networking, vpc, monitoring, flow-logs
+
+---
+
+*题库版本：v1.0*  
+*题目数量：30 题*  
+*最后更新：2026-03-08*

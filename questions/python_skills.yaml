@@ -1,0 +1,441 @@
+# Python 技能题库
+
+## API 调用
+
+---
+
+### python_api_001
+**难度:** L1  
+**题目:** 使用 requests 库发送 GET 请求，正确的代码是？
+
+A. `requests.get('https://api.example.com/data')`  
+B. `requests.post('https://api.example.com/data')`  
+C. `requests.send('GET', 'https://api.example.com/data')`  
+D. `requests.fetch('https://api.example.com/data')`  
+
+**正确答案:** A  
+**解析:** requests.get() 是发送 GET 请求的标准方法。requests.post() 用于 POST 请求。requests 库没有 send() 和 fetch() 方法 (send 是 Session 对象的方法)。  
+**知识点:** requests 库，HTTP 请求方法  
+**标签:** python, api, requests, http
+
+---
+
+### python_api_002
+**难度:** L1  
+**题目:** 如何从 requests 响应对象中获取 JSON 数据？
+
+A. `response.text`  
+B. `response.json()`  
+C. `response.content`  
+D. `response.data`  
+
+**正确答案:** B  
+**解析:** response.json() 将响应内容解析为 JSON 对象。response.text 返回字符串，response.content 返回字节。  
+**知识点:** requests 响应，JSON 解析  
+**标签:** python, api, requests, json
+
+---
+
+### python_api_003
+**难度:** L2  
+**题目:** 处理 API 认证时，以下哪种方式最安全？
+
+A. 将 API Key 硬编码在代码中  
+B. 使用环境变量存储 API Key  
+C. 将 API Key 提交到 Git 仓库  
+D. 在代码注释中记录 API Key  
+
+**正确答案:** B  
+**解析:** 使用环境变量 (或 secrets 管理服务) 存储敏感信息是最佳实践。硬编码、提交到 Git、写在注释中都会泄露凭证。  
+**知识点:** API 认证，安全最佳实践  
+**标签:** python, api, security, credentials
+
+---
+
+### python_api_004
+**难度:** L2  
+**题目:** 处理 API 速率限制 (Rate Limiting) 的最佳做法是？
+
+A. 持续重试直到成功  
+B. 捕获 429 错误，使用指数退避重试  
+C. 降低请求频率，不处理错误  
+D. 忽略错误继续发送请求  
+
+**正确答案:** B  
+**解析:** 指数退避 (Exponential Backoff) 是处理速率限制的标准做法：每次重试等待时间递增 (1s, 2s, 4s, 8s...)，避免加重服务器负担。  
+**知识点:** 速率限制，错误处理，指数退避  
+**标签:** python, api, rate-limit, error-handling
+
+---
+
+### python_api_005
+**难度:** L3  
+**题目:** 使用 aiohttp 进行异步 API 调用的正确代码结构是？
+
+A. 
+```python
+import aiohttp
+async with aiohttp.ClientSession() as session:
+    async with session.get(url) as response:
+        data = await response.json()
+```
+
+B. 
+```python
+import aiohttp
+with aiohttp.ClientSession() as session:
+    with session.get(url) as response:
+        data = response.json()
+```
+
+C. 
+```python
+import aiohttp
+session = aiohttp.ClientSession()
+response = session.get(url)
+data = response.json()
+```
+
+D. 
+```python
+import aiohttp
+data = aiohttp.get(url).json()
+```
+
+**正确答案:** A  
+**解析:** aiohttp 需要 async/await 语法。ClientSession 和 response 都需要 async with 管理，response.json() 需要 await。  
+**知识点:** aiohttp, 异步编程，async/await  
+**标签:** python, api, async, aiohttp
+
+---
+
+## 脚本开发
+
+---
+
+### python_dev_001
+**难度:** L1  
+**题目:** 读取 JSON 配置文件，正确的代码是？
+
+A. 
+```python
+import json
+with open('config.json') as f:
+    config = json.load(f)
+```
+
+B. 
+```python
+import json
+config = json.read('config.json')
+```
+
+C. 
+```python
+config = open('config.json').read()
+```
+
+D. 
+```python
+import json
+config = json.loads('config.json')
+```
+
+**正确答案:** A  
+**解析:** json.load() 从文件对象读取 JSON。json.loads() 从字符串解析 JSON。json 模块没有 read() 方法。  
+**知识点:** JSON 文件读取  
+**标签:** python, file, json
+
+---
+
+### python_dev_002
+**难度:** L1  
+**题目:** 使用 argparse 解析命令行参数，正确的代码是？
+
+A. 
+```python
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument('--name')
+args = parser.parse_args()
+```
+
+B. 
+```python
+import argparse
+args = argparse.parse()
+```
+
+C. 
+```python
+import sys
+args = sys.args
+```
+
+D. 
+```python
+import argparse
+parser = argparse.Parser()
+args = parser.parse()
+```
+
+**正确答案:** A  
+**解析:** argparse 的标准用法：创建 ArgumentParser → 添加参数 → parse_args()。  
+**知识点:** argparse, 命令行参数  
+**标签:** python, argparse, cli
+
+---
+
+### python_dev_003
+**难度:** L2  
+**题目:** 使用 logging 模块记录错误，正确的做法是？
+
+A. `print("Error:", error)`  
+B. `logging.error("Error: %s", error)`  
+C. `sys.stderr.write("Error\n")`  
+D. `log.write("Error")`  
+
+**正确答案:** B  
+**解析:** logging.error() 是标准的错误日志记录方法，支持日志级别、格式化、输出到文件/控制台等。print 不适合生产环境。  
+**知识点:** logging, 日志记录  
+**标签:** python, logging, error-handling
+
+---
+
+### python_dev_004
+**难度:** L2  
+**题目:** 使用 subprocess 执行 shell 命令并获取输出，正确的代码是？
+
+A. 
+```python
+import subprocess
+result = subprocess.run(['ls', '-l'], capture_output=True, text=True)
+print(result.stdout)
+```
+
+B. 
+```python
+import subprocess
+result = subprocess.call('ls -l')
+print(result)
+```
+
+C. 
+```python
+import subprocess
+result = subprocess.execute('ls -l')
+print(result.output)
+```
+
+D. 
+```python
+import subprocess
+result = subprocess.run('ls -l')
+print(result)
+```
+
+**正确答案:** A  
+**解析:** subprocess.run() 是推荐的方法，capture_output=True 捕获输出，text=True 返回字符串而非字节。  
+**知识点:** subprocess, shell 命令  
+**标签:** python, subprocess, shell
+
+---
+
+### python_dev_005
+**难度:** L3  
+**题目:** 使用 context manager 自定义资源管理，正确的实现是？
+
+A. 
+```python
+from contextlib import contextmanager
+
+@contextmanager
+def managed_resource():
+    resource = acquire()
+    try:
+        yield resource
+    finally:
+        release(resource)
+```
+
+B. 
+```python
+def managed_resource():
+    resource = acquire()
+    return resource
+```
+
+C. 
+```python
+class ManagedResource:
+    def run(self):
+        return acquire()
+```
+
+D. 
+```python
+@manager
+def managed_resource():
+    return acquire()
+```
+
+**正确答案:** A  
+**解析:** 使用@contextmanager 装饰器和 yield 创建上下文管理器，确保资源在 finally 块中释放。  
+**知识点:** context manager, 资源管理  
+**标签:** python, context-manager, resource
+
+---
+
+## 运维自动化
+
+---
+
+### python_ops_001
+**难度:** L1  
+**题目:** 使用 boto3 创建 S3 客户端，正确的代码是？
+
+A. 
+```python
+import boto3
+s3 = boto3.client('s3')
+```
+
+B. 
+```python
+import boto3
+s3 = boto3.resource('s3')
+```
+
+C. 
+```python
+import boto3
+s3 = boto3.S3()
+```
+
+D. 
+```python
+import boto3
+s3 = boto3.connect('s3')
+```
+
+**正确答案:** A  
+**解析:** boto3.client('s3') 创建 S3 客户端 (低级 API)。boto3.resource('s3') 创建资源对象 (高级 API)。boto3 没有 S3() 和 connect() 方法。  
+**知识点:** boto3, S3 客户端  
+**标签:** python, aws, boto3, s3
+
+---
+
+### python_ops_002
+**难度:** L2  
+**题目:** 使用 boto3 列出 S3 存储桶中的所有对象，正确的代码是？
+
+A. 
+```python
+response = s3.list_objects_v2(Bucket='my-bucket')
+for obj in response['Contents']:
+    print(obj['Key'])
+```
+
+B. 
+```python
+response = s3.list_buckets()
+for obj in response['Buckets']:
+    print(obj['Name'])
+```
+
+C. 
+```python
+response = s3.get_bucket_objects(Bucket='my-bucket')
+for obj in response['Objects']:
+    print(obj['Key'])
+```
+
+D. 
+```python
+response = s3.list_all_objects('my-bucket')
+for obj in response:
+    print(obj)
+```
+
+**正确答案:** A  
+**解析:** list_objects_v2 是列出桶中对象的正确 API。list_buckets 列出所有桶。get_bucket_objects 和 list_all_objects 不是有效 API。  
+**知识点:** boto3, S3 API  
+**标签:** python, aws, boto3, s3
+
+---
+
+### python_ops_003
+**难度:** L2  
+**题目:** 使用 boto3 处理分页 (超过 1000 个对象)，正确的做法是？
+
+A. 
+```python
+paginator = s3.get_paginator('list_objects_v2')
+for page in paginator.paginate(Bucket='my-bucket'):
+    for obj in page['Contents']:
+        process(obj)
+```
+
+B. 
+```python
+response = s3.list_objects_v2(Bucket='my-bucket', MaxKeys=10000)
+for obj in response['Contents']:
+    process(obj)
+```
+
+C. 
+```python
+response = s3.list_objects_v2(Bucket='my-bucket')
+for obj in response['Contents']:
+    process(obj)
+```
+
+D. 
+```python
+objects = s3.list_all_objects(Bucket='my-bucket')
+for obj in objects:
+    process(obj)
+```
+
+**正确答案:** A  
+**解析:** Paginator 自动处理分页，遍历所有页面。MaxKeys 最大 1000，不能一次获取所有对象。  
+**知识点:** boto3, 分页，Paginator  
+**标签:** python, aws, boto3, pagination
+
+---
+
+### python_ops_004
+**难度:** L3  
+**题目:** 实现定时任务，以下哪种方式最适合生产环境？
+
+A. `while True: task(); time.sleep(3600)`  
+B. 使用 schedule 库 + 守护进程  
+C. 使用 EventBridge + Lambda  
+D. 使用 cron + 脚本  
+
+**正确答案:** C  
+**解析:** EventBridge + Lambda 是 AWS 原生的定时任务方案，高可用、无需管理基础设施。schedule 库和 cron 需要管理服务器，while True 不适合生产。  
+**知识点:** 定时任务，EventBridge, Lambda  
+**标签:** python, aws, scheduling, lambda
+
+---
+
+### python_ops_005
+**难度:** L3  
+**题目:** 使用 boto3 实现 S3 文件的断点续传，应该？
+
+A. 手动实现分片上传逻辑  
+B. 使用 S3Transfer 的 TransferConfig  
+C. 使用 multipart upload API  
+D. boto3 不支持断点续传  
+
+**正确答案:** B  
+**解析:** boto3 的 S3Transfer 模块提供 TransferConfig，支持断点续传、并行传输、进度回调等。底层使用 multipart upload。  
+**知识点:** boto3, S3Transfer, 断点续传  
+**标签:** python, aws, boto3, s3, transfer
+
+---
+
+*题库版本：v1.0*  
+*题目数量：15 题*  
+*最后更新：2026-03-08*

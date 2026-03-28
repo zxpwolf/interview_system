@@ -1,0 +1,16 @@
+# BayerDBA 依赖
+
+# YAML 解析
+pyyaml>=6.0.0
+
+# 可选：更好的 YAML 支持
+ruamel.yaml>=0.17.0
+
+# 可选：进度条
+tqdm>=4.65.0
+
+# 可选：彩色输出
+colorama>=0.4.6
+
+# 测试
+pytest>=7.0.0
