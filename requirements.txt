@@ -1,16 +1,12 @@
-# BayerDBA 依赖
+# 核心依赖
+boto3>=1.34.0
+mysql-connector-python>=8.3.0
+psycopg2-binary>=2.9.9
 
-# YAML 解析
-pyyaml>=6.0.0
+# Excel 支持
+openpyxl>=3.1.0
 
-# 可选：更好的 YAML 支持
-ruamel.yaml>=0.17.0
-
-# 可选：进度条
-tqdm>=4.65.0
-
-# 可选：彩色输出
-colorama>=0.4.6
-
-# 测试
-pytest>=7.0.0
+# 测试依赖
+pytest>=7.4.0
+pytest-cov>=4.1.0
+coverage>=7.3.0

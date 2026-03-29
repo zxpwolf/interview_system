@@ -1,0 +1,19 @@
+{
+  "tests/test_batch_add_dba.py::TestAWSRDSManager::test_get_all_instances": true,
+  "tests/test_batch_add_dba.py::TestDatabaseOperatorMySQL::test_check_user_exists_mysql": true,
+  "tests/test_batch_add_dba.py::TestDatabaseOperatorMySQL::test_execute_on_mysql_failure": true,
+  "tests/test_batch_add_dba.py::TestDatabaseOperatorMySQL::test_execute_on_mysql_success": true,
+  "tests/test_batch_add_dba.py::TestDatabaseOperatorMySQL::test_grant_mysql_dba_existing_user": true,
+  "tests/test_batch_add_dba.py::TestDatabaseOperatorMySQL::test_grant_mysql_dba_new_user": true,
+  "tests/test_batch_add_dba.py::TestDatabaseOperatorPostgreSQL::test_check_user_exists_pg": true,
+  "tests/test_batch_add_dba.py::TestDatabaseOperatorPostgreSQL::test_execute_on_pg_success": true,
+  "tests/test_batch_add_dba.py::TestDatabaseOperatorPostgreSQL::test_grant_pg_dba_existing_user": true,
+  "tests/test_batch_add_dba.py::TestDatabaseOperatorPostgreSQL::test_grant_pg_dba_new_user": true,
+  "tests/test_batch_add_dba.py::TestEdgeCases::test_empty_password": true,
+  "tests/test_batch_add_dba.py::TestEdgeCases::test_long_instance_id": true,
+  "tests/test_batch_add_dba.py::TestEdgeCases::test_special_characters_in_username": true,
+  "tests/test_batch_add_dba.py::TestExecutionResult::test_execution_result_creation": true,
+  "tests/test_batch_add_dba.py::TestExecutionResult::test_execution_result_to_dict": true,
+  "tests/test_batch_add_dba.py::TestPermissionVerification::test_mysql_dba_permissions_format": true,
+  "tests/test_batch_add_dba.py::TestPermissionVerification::test_postgresql_dba_permissions_format": true
+}
