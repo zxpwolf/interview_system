@@ -1,0 +1,16 @@
+{
+  "name": "互联网医院产品系统架构图",
+  "timestamp": "2026-03-29T18:10:00+08:00",
+  "mermaid_code": "graph TB\n    %% 样式定义\n    classDef userLayer fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    classDef gatewayLayer fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n    classDef businessLayer fill:#e8f5e9,stroke:#388e3c,stroke-width:2px\n    classDef platformLayer fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px\n    classDef dataLayer fill:#fff9c4,stroke:#fbc02d,stroke-width:2px\n    classDef infraLayer fill:#ffebee,stroke:#d32f2f,stroke-width:2px\n\n    subgraph UserLayer[\"📱 用户层 User Layer\"]\n        direction LR\n        A1[\"📱 C 端小程序<br/>预约挂号/问诊/处方\"]\n        A2[\"📱 C 端 APP<br/>全流程服务\"]\n        A3[\"💻 C 端 Web<br/>网站服务\"]\n        A4[\"🏥 B 端小程序<br/>医生端/医院端\"]\n        A5[\"👨‍💼 运营平台<br/>后台管理\"]\n    end\n\n    subgraph GatewayLayer[\"🔐 网关层 Gateway Layer\"]\n        direction LR\n        B1[\"🌐 API Gateway<br/>统一入口\"]\n        B2[\"⚖️ 负载均衡<br/>流量分发\"]\n        B3[\"🔒 安全认证<br/>权限验证\"]\n    end\n\n    subgraph BusinessLayer[\"💼 业务层 Business Layer\"]\n        direction LR\n        C1[\"📋 挂号系统<br/>预约/排班\"]\n        C2[\"💬 问诊系统<br/>图文/视频\"]\n        C3[\"💊 处方系统<br/>开方/审核\"]\n        C4[\"💰 支付系统<br/>医保/自费\"]\n        C5[\"📊 运营系统<br/>活动/数据\"]\n        C6[\"👥 用户系统<br/>注册/登录\"]\n        C7[\"📦 订单系统<br/>订单管理\"]\n        C8[\"🔔 消息系统<br/>通知/推送\"]\n    end\n\n    subgraph PlatformLayer[\"🔧 中台层 Platform Layer\"]\n        direction LR\n        D1[\"👤 用户中心<br/>用户画像\"]\n        D2[\"📝 订单中心<br/>订单处理\"]\n        D3[\"💬 消息中心<br/>消息推送\"]\n        D4[\"📈 数据中心<br/>数据分析\"]\n        D5[\"🤖 AI 能力<br/>智能问诊\"]\n    end\n\n    subgraph DataLayer[\"💾 数据层 Data Layer\"]\n        direction LR\n        E1[\"🗄️ MySQL<br/>关系型数据库\"]\n        E2[\"⚡ Redis<br/>缓存数据库\"]\n        E3[\"🔍 Elasticsearch<br/>搜索引擎\"]\n        E4[\"📊 ClickHouse<br/>分析数据库\"]\n    end\n\n    subgraph InfraLayer[\"🏗️ 基础层 Infrastructure Layer\"]\n        direction LR\n        F1[\"☁️ 云服务<br/>阿里云/腾讯云\"]\n        F2[\"🔒 安全合规<br/>等保三级\"]\n        F3[\"📜 资质认证<br/>互联网医院牌照\"]\n        F4[\"🛡️ 数据安全<br/>隐私保护\"]\n    end\n\n    subgraph External[\"🔗 外部对接 External Systems\"]\n        direction LR\n        G1[\"🏥 医院 HIS<br/>医院系统\"]\n        G2[\"💳 医保系统<br/>医保结算\"]\n        G3[\"🚚 药品配送<br/>物流配送\"]\n        G4[\"💳 支付渠道<br/>微信/支付宝\"]\n        G5[\"📱 短信服务<br/>短信通知\"]\n        G6[\"🔐 CA 认证<br/>电子签名\"]\n    end\n\n    %% 连接关系\n    A1 & A2 & A3 & A4 & A5 --> B1\n    B1 --> B2 & B3\n    B2 --> C1 & C2 & C3 & C4 & C5 & C6 & C7 & C8\n    C1 & C2 & C3 & C4 & C5 & C6 & C7 & C8 --> D1 & D2 & D3 & D4 & D5\n    D1 & D2 & D3 & D4 & D5 --> E1 & E2 & E3 & E4\n    E1 & E2 & E3 & E4 --> F1 & F2 & F3 & F4\n    \n    C1 & C2 & C3 & C4 <--> G1\n    C4 <--> G2 & G4\n    C3 <--> G3\n    C6 <--> G5 & G6\n\n    %% 应用样式\n    class A1,A2,A3,A4,A5 userLayer\n    class B1,B2,B3 gatewayLayer\n    class C1,C2,C3,C4,C5,C6,C7,C8 businessLayer\n    class D1,D2,D3,D4,D5 platformLayer\n    class E1,E2,E3,E4 dataLayer\n    class F1,F2,F3,F4 infraLayer\n    class G1,G2,G3,G4,G5,G6 external",
+  "validation": {
+    "status": "valid",
+    "syntax_check": "passed",
+    "notes": [
+      "Mermaid 语法正确",
+      "subgraph 结构完整",
+      "classDef 样式定义正确",
+      "连接关系清晰",
+      "可在 https://mermaid.live/ 直接渲染"
+    ]
+  }
+}

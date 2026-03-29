@@ -1,0 +1,165 @@
+<mxGraphModel dx="1426" dy="736" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" background="#ffffff" math="0" shadow="0">
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+    
+    <!-- 用户层 -->
+    <mxCell id="user-layer" value="📱 用户层 User Layer" style="swimlane;html=1;startSize=40;horizontal=1;container=1;collapsible=0;childLayout=stackLayout;resizeParent=1;resizeLast=1;strokeColor=#1976d2;fillColor=#e3f2fd;fontColor=#000000;" parent="1" vertex="1">
+      <mxGeometry x="100" y="80" width="1400" height="100" as="geometry"/>
+    </mxCell>
+    <mxCell id="a1" value="📱 C 端小程序&lt;br&gt;预约挂号/问诊/处方" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#1976d2;fillColor=#bbdefb;fontColor=#000000;" parent="user-layer" vertex="1">
+      <mxGeometry x="20" y="40" width="260" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="a2" value="📱 C 端 APP&lt;br&gt;全流程服务" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#1976d2;fillColor=#bbdefb;fontColor=#000000;" parent="user-layer" vertex="1">
+      <mxGeometry x="300" y="40" width="260" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="a3" value="💻 C 端 Web&lt;br&gt;网站服务" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#1976d2;fillColor=#bbdefb;fontColor=#000000;" parent="user-layer" vertex="1">
+      <mxGeometry x="580" y="40" width="260" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="a4" value="🏥 B 端小程序&lt;br&gt;医生端/医院端" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#1976d2;fillColor=#bbdefb;fontColor=#000000;" parent="user-layer" vertex="1">
+      <mxGeometry x="860" y="40" width="260" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="a5" value="👨‍💼 运营平台&lt;br&gt;后台管理" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#1976d2;fillColor=#bbdefb;fontColor=#000000;" parent="user-layer" vertex="1">
+      <mxGeometry x="1140" y="40" width="240" height="50" as="geometry"/>
+    </mxCell>
+
+    <!-- 网关层 -->
+    <mxCell id="gateway-layer" value="🔐 网关层 Gateway Layer" style="swimlane;html=1;startSize=40;horizontal=1;container=1;collapsible=0;childLayout=stackLayout;resizeParent=1;resizeLast=1;strokeColor=#f57c00;fillColor=#ffe0b2;fontColor=#000000;" parent="1" vertex="1">
+      <mxGeometry x="100" y="200" width="1400" height="100" as="geometry"/>
+    </mxCell>
+    <mxCell id="b1" value="🌐 API Gateway&lt;br&gt;统一入口" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#f57c00;fillColor=#ffcc80;fontColor=#000000;" parent="gateway-layer" vertex="1">
+      <mxGeometry x="200" y="40" width="300" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="b2" value="⚖️ 负载均衡&lt;br&gt;流量分发" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#f57c00;fillColor=#ffcc80;fontColor=#000000;" parent="gateway-layer" vertex="1">
+      <mxGeometry x="520" y="40" width="260" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="b3" value="🔒 安全认证&lt;br&gt;权限验证" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#f57c00;fillColor=#ffcc80;fontColor=#000000;" parent="gateway-layer" vertex="1">
+      <mxGeometry x="800" y="40" width="260" height="50" as="geometry"/>
+    </mxCell>
+
+    <!-- 业务层 -->
+    <mxCell id="business-layer" value="💼 业务层 Business Layer" style="swimlane;html=1;startSize=40;horizontal=1;container=1;collapsible=0;childLayout=stackLayout;resizeParent=1;resizeLast=1;strokeColor=#388e3c;fillColor=#c8e6c9;fontColor=#000000;" parent="1" vertex="1">
+      <mxGeometry x="100" y="320" width="1400" height="140" as="geometry"/>
+    </mxCell>
+    <mxCell id="c1" value="📋 挂号系统&lt;br&gt;预约/排班" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#388e3c;fillColor=#a5d6a7;fontColor=#000000;" parent="business-layer" vertex="1">
+      <mxGeometry x="20" y="40" width="160" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="c2" value="💬 问诊系统&lt;br&gt;图文/视频" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#388e3c;fillColor=#a5d6a7;fontColor=#000000;" parent="business-layer" vertex="1">
+      <mxGeometry x="200" y="40" width="160" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="c3" value="💊 处方系统&lt;br&gt;开方/审核" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#388e3c;fillColor=#a5d6a7;fontColor=#000000;" parent="business-layer" vertex="1">
+      <mxGeometry x="380" y="40" width="160" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="c4" value="💰 支付系统&lt;br&gt;医保/自费" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#388e3c;fillColor=#a5d6a7;fontColor=#000000;" parent="business-layer" vertex="1">
+      <mxGeometry x="560" y="40" width="160" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="c5" value="📊 运营系统&lt;br&gt;活动/数据" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#388e3c;fillColor=#a5d6a7;fontColor=#000000;" parent="business-layer" vertex="1">
+      <mxGeometry x="740" y="40" width="160" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="c6" value="👥 用户系统&lt;br&gt;注册/登录" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#388e3c;fillColor=#a5d6a7;fontColor=#000000;" parent="business-layer" vertex="1">
+      <mxGeometry x="920" y="40" width="160" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="c7" value="📦 订单系统&lt;br&gt;订单管理" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#388e3c;fillColor=#a5d6a7;fontColor=#000000;" parent="business-layer" vertex="1">
+      <mxGeometry x="1100" y="40" width="160" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="c8" value="🔔 消息系统&lt;br&gt;通知/推送" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#388e3c;fillColor=#a5d6a7;fontColor=#000000;" parent="business-layer" vertex="1">
+      <mxGeometry x="1280" y="40" width="100" height="50" as="geometry"/>
+    </mxCell>
+
+    <!-- 中台层 -->
+    <mxCell id="platform-layer" value="🔧 中台层 Platform Layer" style="swimlane;html=1;startSize=40;horizontal=1;container=1;collapsible=0;childLayout=stackLayout;resizeParent=1;resizeLast=1;strokeColor=#7b1fa2;fillColor=#e1bee7;fontColor=#000000;" parent="1" vertex="1">
+      <mxGeometry x="100" y="480" width="1400" height="100" as="geometry"/>
+    </mxCell>
+    <mxCell id="d1" value="👤 用户中心&lt;br&gt;用户画像" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#7b1fa2;fillColor=#ce93d8;fontColor=#000000;" parent="platform-layer" vertex="1">
+      <mxGeometry x="100" y="40" width="220" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="d2" value="📝 订单中心&lt;br&gt;订单处理" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#7b1fa2;fillColor=#ce93d8;fontColor=#000000;" parent="platform-layer" vertex="1">
+      <mxGeometry x="340" y="40" width="220" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="d3" value="💬 消息中心&lt;br&gt;消息推送" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#7b1fa2;fillColor=#ce93d8;fontColor=#000000;" parent="platform-layer" vertex="1">
+      <mxGeometry x="580" y="40" width="220" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="d4" value="📈 数据中心&lt;br&gt;数据分析" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#7b1fa2;fillColor=#ce93d8;fontColor=#000000;" parent="platform-layer" vertex="1">
+      <mxGeometry x="820" y="40" width="220" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="d5" value="🤖 AI 能力&lt;br&gt;智能问诊" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#7b1fa2;fillColor=#ce93d8;fontColor=#000000;" parent="platform-layer" vertex="1">
+      <mxGeometry x="1060" y="40" width="220" height="50" as="geometry"/>
+    </mxCell>
+
+    <!-- 数据层 -->
+    <mxCell id="data-layer" value="💾 数据层 Data Layer" style="swimlane;html=1;startSize=40;horizontal=1;container=1;collapsible=0;childLayout=stackLayout;resizeParent=1;resizeLast=1;strokeColor=#fbc02d;fillColor=#fff59d;fontColor=#000000;" parent="1" vertex="1">
+      <mxGeometry x="100" y="600" width="1400" height="100" as="geometry"/>
+    </mxCell>
+    <mxCell id="e1" value="🗄️ MySQL&lt;br&gt;关系型数据库" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#f9a825;fillColor=#fff176;fontColor=#000000;" parent="data-layer" vertex="1">
+      <mxGeometry x="100" y="40" width="260" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="e2" value="⚡ Redis&lt;br&gt;缓存数据库" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#f9a825;fillColor=#fff176;fontColor=#000000;" parent="data-layer" vertex="1">
+      <mxGeometry x="380" y="40" width="260" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="e3" value="🔍 Elasticsearch&lt;br&gt;搜索引擎" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#f9a825;fillColor=#fff176;fontColor=#000000;" parent="data-layer" vertex="1">
+      <mxGeometry x="660" y="40" width="260" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="e4" value="📊 ClickHouse&lt;br&gt;分析数据库" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#f9a825;fillColor=#fff176;fontColor=#000000;" parent="data-layer" vertex="1">
+      <mxGeometry x="940" y="40" width="260" height="50" as="geometry"/>
+    </mxCell>
+
+    <!-- 基础层 -->
+    <mxCell id="infra-layer" value="🏗️ 基础层 Infrastructure Layer" style="swimlane;html=1;startSize=40;horizontal=1;container=1;collapsible=0;childLayout=stackLayout;resizeParent=1;resizeLast=1;strokeColor=#d32f2f;fillColor=#ffcdd2;fontColor=#000000;" parent="1" vertex="1">
+      <mxGeometry x="100" y="720" width="1400" height="100" as="geometry"/>
+    </mxCell>
+    <mxCell id="f1" value="☁️ 云服务&lt;br&gt;阿里云/腾讯云" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#d32f2f;fillColor=#ef9a9a;fontColor=#000000;" parent="infra-layer" vertex="1">
+      <mxGeometry x="100" y="40" width="260" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="f2" value="🔒 安全合规&lt;br&gt;等保三级" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#d32f2f;fillColor=#ef9a9a;fontColor=#000000;" parent="infra-layer" vertex="1">
+      <mxGeometry x="380" y="40" width="260" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="f3" value="📜 资质认证&lt;br&gt;互联网医院牌照" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#d32f2f;fillColor=#ef9a9a;fontColor=#000000;" parent="infra-layer" vertex="1">
+      <mxGeometry x="660" y="40" width="260" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="f4" value="🛡️ 数据安全&lt;br&gt;隐私保护" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#d32f2f;fillColor=#ef9a9a;fontColor=#000000;" parent="infra-layer" vertex="1">
+      <mxGeometry x="940" y="40" width="260" height="50" as="geometry"/>
+    </mxCell>
+
+    <!-- 外部对接 -->
+    <mxCell id="external" value="🔗 外部对接 External Systems" style="swimlane;html=1;startSize=40;horizontal=0;container=1;collapsible=0;childLayout=stackLayout;resizeParent=1;resizeLast=1;strokeColor=#607d8b;fillColor=#cfd8dc;fontColor=#000000;" parent="1" vertex="1">
+      <mxGeometry x="1520" y="320" width="200" height="300" as="geometry"/>
+    </mxCell>
+    <mxCell id="g1" value="🏥 医院 HIS&lt;br&gt;医院系统" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#607d8b;fillColor=#b0bec5;fontColor=#000000;" parent="external" vertex="1">
+      <mxGeometry x="20" y="40" width="160" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="g2" value="💳 医保系统&lt;br&gt;医保结算" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#607d8b;fillColor=#b0bec5;fontColor=#000000;" parent="external" vertex="1">
+      <mxGeometry x="20" y="90" width="160" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="g3" value="🚚 药品配送&lt;br&gt;物流配送" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#607d8b;fillColor=#b0bec5;fontColor=#000000;" parent="external" vertex="1">
+      <mxGeometry x="20" y="140" width="160" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="g4" value="💳 支付渠道&lt;br&gt;微信/支付宝" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#607d8b;fillColor=#b0bec5;fontColor=#000000;" parent="external" vertex="1">
+      <mxGeometry x="20" y="190" width="160" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="g5" value="📱 短信服务&lt;br&gt;短信通知" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#607d8b;fillColor=#b0bec5;fontColor=#000000;" parent="external" vertex="1">
+      <mxGeometry x="20" y="240" width="160" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="g6" value="🔐 CA 认证&lt;br&gt;电子签名" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;strokeColor=#607d8b;fillColor=#b0bec5;fontColor=#000000;" parent="external" vertex="1">
+      <mxGeometry x="20" y="290" width="160" height="40" as="geometry"/>
+    </mxCell>
+
+    <!-- 连接线 -->
+    <mxCell id="edge1" style="endArrow=classic;html=1;entryX=0.5;entryY=0;exitX=0.5;exitY=1;" parent="1" source="a1" target="b1" edge="1"/>
+    <mxCell id="edge2" style="endArrow=classic;html=1;entryX=0.5;entryY=0;exitX=0.5;exitY=1;" parent="1" source="a2" target="b1" edge="1"/>
+    <mxCell id="edge3" style="endArrow=classic;html=1;entryX=0.5;entryY=0;exitX=0.5;exitY=1;" parent="1" source="a3" target="b1" edge="1"/>
+    <mxCell id="edge4" style="endArrow=classic;html=1;entryX=0.5;entryY=0;exitX=0.5;exitY=1;" parent="1" source="a4" target="b1" edge="1"/>
+    <mxCell id="edge5" style="endArrow=classic;html=1;entryX=0.5;entryY=0;exitX=0.5;exitY=1;" parent="1" source="a5" target="b1" edge="1"/>
+    <mxCell id="edge6" style="endArrow=classic;html=1;entryX=0;entryY=0.5;exitX=1;exitY=0.5;" parent="1" source="b1" target="b2" edge="1"/>
+    <mxCell id="edge7" style="endArrow=classic;html=1;entryX=0;entryY=0.5;exitX=1;exitY=0.5;" parent="1" source="b2" target="b3" edge="1"/>
+    <mxCell id="edge8" style="endArrow=classic;html=1;entryX=0.5;entryY=0;exitX=0.5;exitY=1;" parent="1" source="b2" target="c1" edge="1"/>
+    <mxCell id="edge9" style="endArrow=classic;html=1;entryX=0.5;entryY=0;exitX=0.5;exitY=1;" parent="1" source="c1" target="d1" edge="1"/>
+    <mxCell id="edge10" style="endArrow=classic;html=1;entryX=0.5;entryY=0;exitX=0.5;exitY=1;" parent="1" source="d1" target="e1" edge="1"/>
+    <mxCell id="edge11" style="endArrow=classic;html=1;entryX=0.5;entryY=0;exitX=0.5;exitY=1;" parent="1" source="e1" target="f1" edge="1"/>
+    <mxCell id="edge12" style="endArrow=classic;html=1;entryX=0;entryY=0.5;exitX=1;exitY=0.5;" parent="1" source="c1" target="g1" edge="1"/>
+    <mxCell id="edge13" style="endArrow=classic;html=1;entryX=0;entryY=0.5;exitX=1;exitY=0.5;" parent="1" source="c4" target="g2" edge="1"/>
+    <mxCell id="edge14" style="endArrow=classic;html=1;entryX=0;entryY=0.5;exitX=1;exitY=0.5;" parent="1" source="c3" target="g3" edge="1"/>
+    <mxCell id="edge15" style="endArrow=classic;html=1;entryX=0;entryY=0.5;exitX=1;exitY=0.5;" parent="1" source="c4" target="g4" edge="1"/>
+    <mxCell id="edge16" style="endArrow=classic;html=1;entryX=0;entryY=0.5;exitX=1;exitY=0.5;" parent="1" source="c6" target="g5" edge="1"/>
+    <mxCell id="edge17" style="endArrow=classic;html=1;entryX=0;entryY=0.5;exitX=1;exitY=0.5;" parent="1" source="c6" target="g6" edge="1"/>
+  </root>
+</mxGraphModel>
